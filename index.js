@@ -4,6 +4,7 @@ const app = express();
 const detabaseconnection = require("./dbconnection/connection")
 
 const path = require("path");
+const port = process.env.PORT || 5000;
 require("dotenv").config({path:'./config.env'});
 
 // we need to tell the server that we will recirvr deta in form of json from frontend
@@ -49,8 +50,8 @@ app.get('/api/jokes', async (req, res) => {
     }
 });
 // // .then(fat arrow function)
- const port = process.env.PORT || 5000;
-if (process.env.NODE_ENV !== "production") {
+ 
+if (process.env.NODE_ENV === "production") {
   app.use(express.static("client/build"));
   app.get("*", (req, res) => {
     res.sendFile(
