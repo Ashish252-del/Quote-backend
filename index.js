@@ -49,20 +49,20 @@ app.get('/api/jokes', async (req, res) => {
     }
 });
 // // .then(fat arrow function)
- const port = process.env.PORT || process.env.port;
-// if (process.env.NODE_ENV !== "production") {
-//   app.use(express.static("client/build"));
-//   app.get("*", (req, res) => {
-//     res.sendFile(
-//       path.resolve(__dirname + "/client/build/index.html"),
-//       function (err) {
-//         if (err) {
-//           console.log(err);
-//         }
-//       }
-//     );
-//   });
-// }
+ const port = process.env.PORT || 5000;
+if (process.env.NODE_ENV !== "production") {
+  app.use(express.static("client/build"));
+  app.get("*", (req, res) => {
+    res.sendFile(
+      path.resolve(__dirname + "/client/build/index.html"),
+      function (err) {
+        if (err) {
+          console.log(err);
+        }
+      }
+    );
+  });
+}
 detabaseconnection().then( ()=>
     {
    
