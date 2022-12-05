@@ -49,13 +49,15 @@ app.get('/api/jokes', async (req, res) => {
         res.status(404).json({ success: false, error: error.message });
     }
 });
-// // .then(fat arrow function)
- 
+// code for hosting
+ // note when you have to run on loacal then process.env.NODE_ENV !== "production"
+ // for checking write in url http://localhost:5000/
+ // when you are hosting then process.env.NODE_ENV === "production"
 if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
+  app.use(express.static("Client/build"));
   app.get("*", (req, res) => {
     res.sendFile(
-      path.resolve(__dirname + "/client/build/index.html"),
+      path.resolve(__dirname + "/Client/build/index.html"),
       function (err) {
         if (err) {
           console.log(err);
